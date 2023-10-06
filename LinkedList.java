@@ -80,18 +80,37 @@ public class LinkedList {
         size--;
         return val;
     }
+    public static int itersearch(int key){
+        int idx=0;
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==key){
+                return idx;
+            }
+            temp=temp.next;
+            idx++;
+
+        }
+        return -1;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(2);
         ll.addFirst(1);
         ll.addLast(3);
         ll.addLast(4);
+        ll.addLast(100);
+        ll.addLast(104);
+        ll.addLast(108);
+        ll.addLast(1235);
+        ll.addLast(69);
         ll.add(2, 120);
         ll.print();
         System.out.println("Size of ll is " + ll.size);
         ll.removeLast();
         ll.print();
         System.out.println("Size of ll is " + ll.size);
+        System.out.println(ll.itersearch(1235));
 
     }
 }

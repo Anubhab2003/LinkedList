@@ -1,6 +1,8 @@
 import java.util.*;
+
 //import java.util.LinkedList;
 public class sample {
+  static int size=0;
 
   public static class Node {
     int data;
@@ -17,6 +19,7 @@ public class sample {
 
   public static void addFirst(int data) {
     Node newNode = new Node(data);
+    size++;
     if (head == null) {
       head = tail = newNode;
       return;
@@ -26,13 +29,29 @@ public class sample {
     head = newNode;
   }
 
-  public  void print() {
+  public void print() {
     Node temp = head;
     while (temp != null) {
       System.out.print(temp.data + " ");
       temp = temp.next;
     }
     System.out.println();
+  }
+
+  public static int removeFirst() {
+    if (size == 0) {
+      System.out.println("Sir the linkedlist is empty");
+    } else if (size == 1) {
+      int val = head.data;
+      head = tail = null;
+      size = 0;
+      return val;
+    }
+
+    int val = head.data;
+    head = head.next;
+    size--;
+    return val;
   }
 
   public static void main(String args[]) {
@@ -43,5 +62,9 @@ public class sample {
     ll.addFirst(16);
     ll.addFirst(20);
     ll.print();
+    System.out.println("Sir the Size of LinkedList is :" + ll.size);
+    ll.removeFirst(); // This line will compile and run without errors
+    ll.print();
+    System.out.println("Sir the UPDATED Size of LinkedList is :" + ll.size);
   }
 }

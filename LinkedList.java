@@ -36,8 +36,7 @@ public class LinkedList {
         tail.next = newNode;
         tail = newNode;
     }
-
-    public static void print() {
+        public static void print() {
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.data + "->");
@@ -109,6 +108,19 @@ public class LinkedList {
     public int recsearch(int key){
         return helper(head,key);
     }
+    //REVERSE OF LIST
+    public static void reverse(){
+        Node prev=null;
+        Node curr=tail=head;
+        Node next;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(2);
@@ -122,12 +134,16 @@ public class LinkedList {
         ll.addLast(69);
         ll.add(2, 120);
         ll.print();
-        System.out.println("Size of ll is " + ll.size);
+        //System.out.println("Size of ll is " + ll.size);
         ll.removeLast();
         ll.print();
-        System.out.println("Size of ll is " + ll.size);
+        //System.out.println("Size of ll is " + ll.size);
         System.out.println(ll.itersearch(1235));
         System.out.println(ll.itersearch(1235));
+        System.out.println("REVERSE OF LINKEDLIST");
+        ll.reverse();
+        ll.print();
+        System.out.println("Sir the UPDATED Size of LinkedList is :" + ll.size);
 
     }
 }

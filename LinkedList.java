@@ -121,6 +121,30 @@ public class LinkedList {
         }
         head=prev;
     }
+    public void deleteNthfromend(int n){
+        //Calculate size
+        int sz=0;
+        Node temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            sz++;
+        }
+        if(n==sz){
+            head=head.next;
+            return;
+
+        }
+        int i=1;
+        int itofind=sz-n;
+        Node prev=head;
+        while(i<itofind){
+            prev=prev.next;
+            i++;
+        }
+        prev.next=prev.next.next;
+        return;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(2);
@@ -134,16 +158,10 @@ public class LinkedList {
         ll.addLast(69);
         ll.add(2, 120);
         ll.print();
-        //System.out.println("Size of ll is " + ll.size);
-        ll.removeLast();
+        //ll.print();
+        ll.deleteNthfromend(3);
         ll.print();
-        //System.out.println("Size of ll is " + ll.size);
-        System.out.println(ll.itersearch(1235));
-        System.out.println(ll.itersearch(1235));
-        System.out.println("REVERSE OF LINKEDLIST");
-        ll.reverse();
-        ll.print();
-        System.out.println("Sir the UPDATED Size of LinkedList is :" + ll.size);
+
 
     }
 }

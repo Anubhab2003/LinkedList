@@ -48,15 +48,31 @@ public class doubly{
         System.out.println("null");
 
     }
+    public static void reverse(){
+        Node curr=head;
+        Node prev=null;
+        Node temp;
+        while(curr!=null){
+            temp=curr.next;
+            curr.next=prev;
+            curr.prev=temp;
+            prev=curr;
+            curr=temp;
+        }
+        head=prev;
+        //return prev;
+    }
     public static void main(String args[]){
         doubly dll=new doubly();
         dll.addFirst(3);
         dll.addFirst(2);
         dll.addFirst(1);
         dll.print();
-        System.out.println(dll.size);
-        dll.removeFirst();
+        // System.out.println(dll.size);
+        // dll.removeFirst();
+        // dll.print();
+        // System.out.println(dll.size);
+        dll.reverse();
         dll.print();
-        System.out.println(dll.size);
     }
 }
